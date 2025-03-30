@@ -5,7 +5,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, ShieldAlert } from 'lucide-react';
+import { Loader2, ShieldAlert, Info } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const Login = () => {
   const { login, isLoading, error } = useAuth();
@@ -66,6 +67,47 @@ const Login = () => {
               )}
             </Button>
           </div>
+          
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="about-adfs">
+              <AccordionTrigger className="text-sm text-gray-500">
+                <span className="flex items-center">
+                  <Info className="mr-2 h-4 w-4" />
+                  About ADFS Authentication
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-500">
+                <p className="mb-2">
+                  Active Directory Federation Services (ADFS) provides Single Sign-On (SSO) 
+                  capabilities for your organization's applications.
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Your login credentials never leave your organization's systems</li>
+                  <li>No need to remember multiple passwords for different applications</li>
+                  <li>Securely access applications with your organizational identity</li>
+                  <li>Automatically sign out from all applications when you close your session</li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="troubleshooting">
+              <AccordionTrigger className="text-sm text-gray-500">
+                <span className="flex items-center">
+                  <ShieldAlert className="mr-2 h-4 w-4" />
+                  Troubleshooting
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-500">
+                <p className="mb-2">If you're having trouble signing in:</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Ensure you're using your organizational email and password</li>
+                  <li>Clear your browser cookies and cache</li>
+                  <li>Check if you need to be on the corporate network or VPN</li>
+                  <li>Contact your IT department if problems persist</li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </CardContent>
         <CardFooter className="flex flex-col">
           <p className="px-8 text-center text-sm text-gray-500">
